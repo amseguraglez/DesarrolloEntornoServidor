@@ -1,0 +1,59 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Datos introducidos</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<h1>Datos introducidos</h1>
+	<table class="table table-striped table-dark">
+		<thead>
+			<tr>
+				<th scope="col"><mark>Variables</mark></th>
+				<th scope="col"><mark>Valores</mark></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="col">Nombre</th>
+				<td th:text=${nombre_form}></td>
+			</tr>
+			<tr>
+				<th scope="col">Edad</th>
+				<td th:text=${edad_form}></td>
+			</tr>
+			<tr>
+				<th scope="col">Sexo</th>
+				<td th:if="${sexo_form == 1}" th:text="Hombre"></td>
+				<td th:if="${sexo_form == 0}" th:text="Mujer"></td>
+			</tr>
+			<tr>
+				<th scope="col">Peso</th>
+				<td th:text=${peso_form}></td>
+			</tr>
+			<tr>
+				<th scope="col">Altura</th>
+				<td th:text=${altura_form}></td>
+			</tr>
+			<tr>
+				<th scope="col">IMC</th>
+				<td th:text="${imc_form} + '%'"></td>
+			</tr>
+			<tr>
+				<th scope="col">GC</th>
+				<td th:text="${gc_form} + '%'"></td>
+			</tr>
+			<tr>
+				<th scope="col">Valoraci&oacute;n GC</th>
+				<td th:text=${nivelGC_form}></td>
+			</tr>
+
+		</tbody>
+	</table>
+</body>
+</html>
