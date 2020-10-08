@@ -1,0 +1,61 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Datos introducidos</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Datos introducidos</h1>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col"><mark>Variables</mark></th>
+				<th scope="col"><mark>Valores</mark></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="table-active">
+				<th scope="row">Nombre</th>
+				<td th:text=${nombre_form}></td>
+			</tr>
+			<tr>
+				<th scope="row">Primer apellido</th>
+				<td th:text=${primerApellido_form}></td>
+			</tr>
+			<tr class="table-primary">
+				<th scope="row">Segundo apellido</th>
+				<td th:text=${segundoApellido_form}></td>
+			</tr>
+			<tr class="table-secondary">
+				<th scope="row">Email</th>
+				<td th:text=${email_form}></td>
+			</tr>
+			<tr class="table-success">
+				<th scope="row">Fecha de nacimiento</th>
+				<td
+					th:text="${dia_form} + ' de ' + ${mes_form} + ' de ' + ${anio_form}"></td>
+			</tr>
+			<tr class="table-danger">
+				<th scope="row">Contrase&ntilde;a</th>
+				<td th:text=${contrasena_form}></td>
+			</tr>
+			<tr class="table-warning">
+				<th scope="row">Sexo</th>
+				<td th:text=${sexo_form}></td>
+			</tr>
+			<tr class="table-info">
+				<th scope="row">Direcci&oacute;n</th>
+				<td th:text=${direccion_form}></td>
+			</tr>
+			<tr class="table-light">
+				<th scope="row">Nivel de estudios</th>
+				<td th:text=${estudios_form}></td>
+			</tr>
+			<tr class="table-dark">
+				<th scope="row">Intereses</th>
+				<td th:text=${intereses_form}></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

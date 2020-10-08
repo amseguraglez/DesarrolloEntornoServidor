@@ -1,0 +1,159 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Formulario de registro</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+form {
+	margin: 15px;
+}
+</style>
+</head>
+<body>
+	<h2>Alta de usuario en revista online</h2>
+	<hr>
+	<form th:action="@{/formulario}" method="post">
+		<fieldset>
+			<legend>Datos personales</legend>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Nombre y apellidos</span>
+				</div>
+				<input name="nombre" type="text" aria-label="Nombre"
+					class="form-control" placeholder="Nombre"> <input
+					name="primerApellido" type="text" aria-label="Primer apellido"
+					class="form-control" placeholder="Primer apellido"> <input
+					name="segundoApellido" type="text" aria-label="Segundo apellido"
+					class="form-control" placeholder="Segundo apellido">
+			</div>
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect01">Fecha
+					de nacimiento</label> <select name="dia" class="custom-select"
+					id="inputGroupSelect01">
+					<option selected disabled="disabled">d&iacute;a</option>
+					<option th:each="i : ${#numbers.sequence(1, 31)}" th:value="${i}"
+						th:text="${i}"></option>
+				</select> <select name="mes" class="custom-select" id="inputGroupSelect01">
+					<option selected disabled="disabled">mes</option>
+					<option value="enero">enero</option>
+					<option value="febrero">febrero</option>
+					<option value="marzo">marzo</option>
+					<option value="abril">abril</option>
+					<option value="mayo">mayo</option>
+					<option value="junio">junio</option>
+					<option value="julio">julio</option>
+					<option value="agosto">agosto</option>
+					<option value="septiembre">septiembre</option>
+					<option value="octubre">octubre</option>
+					<option value="noviembre">noviembre</option>
+					<option value="diciembre">diciembre</option>
+				</select> <select name="anio" class="custom-select" id="inputGroupSelect01">
+					<option selected disabled="disabled">a&ntilde;o</option>
+					<option th:each="i : ${#numbers.sequence(1920, 2020)}"
+						th:value="${i}" th:text="${i}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleTextarea">Direcci&oacute;n</label>
+				<textarea name="direccion" class="form-control" id="exampleTextarea"
+					rows="2"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email:</label> <input name="email"
+					type="email" class="form-control" id="exampleInputEmail1"
+					aria-describedby="emailHelp" placeholder="direccion@dominio.es"
+					required> <small id="emailHelp"
+					class="form-text text-muted">Nunca compartiremos tu email
+					con nadie</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Contrase&ntilde;a:</label> <input
+					type="password" name="contrasena" class="form-control"
+					id="exampleInputPassword1" placeholder="M&iacute;nimo 8 caracteres"
+					minlength="8" required><small id="passwordHelp"
+					class="form-text text-muted">Nunca compartas tu
+					contrase&ntilde;a con nadie</small>
+			</div>
+			Sexo:
+			<div class="form-group">
+				<div class="custom-control custom-radio">
+					<input name="sexo" type="radio" id="customRadioH"
+						class="custom-control-input" value="hombre"> <label
+						class="custom-control-label" for="customRadioH">Hombre</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input name="sexo" type="radio" id="customRadioM"
+						class="custom-control-input" value="mujer"> <label
+						class="custom-control-label" for="customRadioM">Mujer</label>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Nivel de estudios e intereses</legend>
+			<div class="form-group">
+				<div class="custom-control custom-radio">
+					<input name="estudios" type="radio" id="customRadio1"
+						class="custom-control-input" value="certificadoescolar"> <label
+						class="custom-control-label" for="customRadio1">Certificado
+						escolar</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input name="estudios" type="radio" id="customRadio2"
+						class="custom-control-input" value="graduado en ESO"> <label
+						class="custom-control-label" for="customRadio2">Graduado
+						E.S.O.</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input name="estudios" type="radio" id="customRadio3"
+						class="custom-control-input" value="bachillerato o FP"> <label
+						class="custom-control-label" for="customRadio3">Bachillerato
+						o FP</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input name="estudios" type="radio" id="customRadio4"
+						class="custom-control-input" value="diplomatura"> <label
+						class="custom-control-label" for="customRadio4">Diplomado</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input name="estudios" type="radio" id="customRadio5"
+						class="custom-control-input" value="licenciatura, m&aacute;ster o doctorado">
+					<label class="custom-control-label" for="customRadio5">Licenciatura
+						- M&aacute;ster - Doctorado</label>
+				</div>
+			</div>
+			Recibir art&iacute;culos de los siguientes temas:
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" name="intereses" class="custom-control-input"
+					id="customCheck1" value="musica"> <label
+					class="custom-control-label" for="customCheck1">M&uacute;sica</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" name="intereses" class="custom-control-input"
+					id="customCheck2" value="deportes"> <label
+					class="custom-control-label" for="customCheck2">Deportes</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" name="intereses" class="custom-control-input"
+					id="customCheck3" value="cine"> <label
+					class="custom-control-label" for="customCheck3">Cine</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" name="intereses" class="custom-control-input"
+					id="customCheck4" value="libros"> <label
+					class="custom-control-label" for="customCheck4">Libros</label>
+			</div>
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" name="intereses" class="custom-control-input"
+					id="customCheck5" value="ciencia"> <label
+					class="custom-control-label" for="customCheck5">Ciencia</label>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Enviar formulario</legend>
+			&iquest;Est&aacute;s seguro de que los datos son correctos?
+			<button type="submit" value="Enviar" class="btn btn-primary">Enviar</button>
+			<button type="reset" value="Borrar" class="btn btn-warning">Borrar</button>
+		</fieldset>
+	</form>
+</body>
+</html>
