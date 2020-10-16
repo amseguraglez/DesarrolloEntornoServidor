@@ -1,0 +1,28 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Inicio</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/inicio}" method="post">
+		<div class="jumbotron">
+			<h1 class="display-3">&iquest;Eres un aut&eacute;ntico chef?</h1>
+			<p class="lead">&iexcl;El quiz definitivo! &iquest;Cu&aacute;nto
+				sabes de cocina? &iexcl;Compru&eacute;balo!</p>
+			<hr class="my-4">
+			<label>Pero antes, d&iacute;nos c&oacute;mo te llamas </label> <input
+				type="text" name="nombre" placeholder="Escribe tu nombre" required />
+				<br/>
+			<p style="margin-top: 7px; "class="lead">
+				<button type="submit" class="btn btn-success">&iexcl;Vamos!</button>
+			</p>
+		</div>
+	</form>
+</body>
+</html>

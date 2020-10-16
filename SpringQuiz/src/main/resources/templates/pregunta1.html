@@ -2,28 +2,37 @@
 <head>
 <title>Pregunta 1</title>
 <link rel="stylesheet" type="text/css"
-	th:href="@{/css/bootstrap.min.css}"/>
-	<style>
-		* {
-		text-align: center;
-		}
-	</style>
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
 </head>
 <body>
-<form th:action="@{/pregunta1}" method="post">
-<div class="card mb-3">
-  <h3 class="card-header">&iquest;Cu&aacute;nto sabes de cocina?</h3>
-  <div class="card-body">
-    <h5 class="card-title">&iquest;Qu&eacute; fruta seca se obtiene de las uvas?</h5>
-  </div>
-  <img style="height: 200px; width: 100%; display: block;" th:href="@{/images/uvas.jpg}" alt="imagen">
-  <div class="card-body">
-    <button type="button" class="btn btn-success">Ciruelas</button>
-    <button type="button" class="btn btn-success">Pasas</button>
-    <button type="button" class="btn btn-success">Orejones</button>
-    <button type="button" class="btn btn-success">Calabacete</button>
-  </div>
- </div>
- </form>
+	<form th:action="@{/pregunta1}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div class="card-body">
+				<h5 class="card-title">&iquest;Qu&eacute; fruta seca se obtiene
+					de las uvas?</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/uvas.jpg}" alt="imagen">
+			<div class="card-body">
+				<button type="button" class="btn btn-success">Ciruelas</button>
+				<button type="button" class="btn btn-success">Pasas</button>
+				<button type="button" class="btn btn-success">Orejones</button>
+				<button type="button" class="btn btn-success">Calabacete</button>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-danger"
+					role="progressbar" style="width: 10%" aria-valuenow="100"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Siguiente</button>
+	</form>
 </body>
 </html>
