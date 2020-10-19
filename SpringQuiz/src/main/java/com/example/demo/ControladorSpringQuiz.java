@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorSpringQuiz {
+	private static int contador;
 
+	/* inicio */
 	@GetMapping("/inicio")
 	public String process(HttpSession session) {
 		return "inicio";
@@ -31,9 +33,40 @@ public class ControladorSpringQuiz {
 		return "redirect:/inicio";
 	}
 
-	@PostMapping("/destroy")
-	public String destroySession(HttpServletRequest request) {
-		request.getSession().invalidate();
-		return "redirect:/inicio";
+	/* pregunta1 */
+	@GetMapping("/pregunta1")
+	public String process1(HttpSession session) {
+		return "pregunta1";
 	}
+
+	@PostMapping("/pregunta1")
+	public String persistMessage1(@RequestParam String pregunta1, HttpServletRequest request) {
+		//String pregunta1 = request.getParameter("pregunta1");
+		if (pregunta1.equals("Pasas")) {
+			contador += 2;
+			return "pregunta2";
+		} 
+		return "redirect:/pregunta1";
+	}
+
+	/* pregunta2 */
+//	@GetMapping("/pregunta2")
+//	public String process2(HttpSession session) {
+//		return "inicio";
+//	}
+//
+//	@PostMapping("/pregunta2")
+//	public String persistMessage2(HttpServletRequest request) {
+//		if (nombre != null) {
+//			return "pregunta3";
+//		}
+//		return "redirect:/inicio";
+//	}
+//
+//	/* fin sesión */
+//	@PostMapping("/destroy")
+//	public String destroySession(HttpServletRequest request) {
+//		request.getSession().invalidate();
+//		return "redirect:/inicio";
+//	}
 }

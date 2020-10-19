@@ -10,25 +10,24 @@
 </style>
 </head>
 <body>
-	<form th:action="@{/pregunta1}" method="post">
+	<form th:action="@{/pregunta2}" method="post">
 		<div class="card mb-3">
 			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
 			<div class="card-body">
-				<h5 class="card-title">&iquest;Qu&eacute; fruta seca se obtiene
-					de las uvas?</h5>
+				<h5 class="card-title">Si hablamos de <i>concass&eacute;</i>, hablamos de...</h5>
 			</div>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
-				th:src="@{/images/uvas.jpg}" alt="imagen">
+				th:src="@{/images/concasse.jpg}" alt="imagen">
 			<div class="card-body">
-				<input type="button" name="pregunta1" class="btn btn-success" value="Ciruelas"/>
-				<input type="button" name="pregunta1" class="btn btn-success" value="Pasas"/>
-				<input type="button" name="pregunta1" class="btn btn-success" value="Orejones"/>
-				<input type="button" name="pregunta1" class="btn btn-success" value="Calabacete"/>
+				<input type="radio" value="0"/><label>Un postre de manzana</label>
+				<input type="radio" value="0"/><label>Un tipo de cocción para ciertas verduras</label>
+				<input type="radio" value="2"/><label>Un tipo de corte</label>
+				<input type="radio" value="0"/><label>Una salsa</label>
 			</div>
 			<div class="progress">
 				<div class="progress-bar progress-bar-striped bg-danger"
-					role="progressbar" style="width: 10%" aria-valuenow="100"
+					role="progressbar" style="width: 20%" aria-valuenow="100"
 					aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
 		</div>
