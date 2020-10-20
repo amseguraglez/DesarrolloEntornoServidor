@@ -40,8 +40,8 @@ public class ControladorSpringQuiz {
 	}
 
 	@PostMapping("/pregunta1")
-	public String persistMessage1(@RequestParam String pregunta1, HttpServletRequest request) {
-		//String pregunta1 = request.getParameter("pregunta1");
+	public String persistMessage1(HttpServletRequest request) {
+		String pregunta1 = request.getParameter("pregunta1");
 		if (pregunta1.equals("Pasas")) {
 			contador += 2;
 			return "pregunta2";
@@ -50,23 +50,25 @@ public class ControladorSpringQuiz {
 	}
 
 	/* pregunta2 */
-//	@GetMapping("/pregunta2")
-//	public String process2(HttpSession session) {
-//		return "inicio";
-//	}
-//
-//	@PostMapping("/pregunta2")
-//	public String persistMessage2(HttpServletRequest request) {
-//		if (nombre != null) {
-//			return "pregunta3";
-//		}
-//		return "redirect:/inicio";
-//	}
-//
-//	/* fin sesión */
-//	@PostMapping("/destroy")
-//	public String destroySession(HttpServletRequest request) {
-//		request.getSession().invalidate();
-//		return "redirect:/inicio";
-//	}
+	@GetMapping("/pregunta2")
+	public String process2(HttpSession session) {
+		return "pregunta2";
+	}
+
+	@PostMapping("/pregunta2")
+	public String persistMessage2(HttpServletRequest request) {
+		String pregunta2 = request.getParameter("pregunta2");
+		if (pregunta2.equals("Un tipo de corte")) {
+			contador += 2;
+			return "pregunta3";
+		} 
+		return "redirect:/pregunta2";
+	}
+
+	/* fin sesión */
+	@PostMapping("/destroy")
+	public String destroySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/inicio";
+	}
 }

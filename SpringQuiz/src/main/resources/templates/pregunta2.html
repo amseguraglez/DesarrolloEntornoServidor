@@ -1,6 +1,6 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Pregunta 1</title>
+<title>Pregunta 2</title>
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/bootstrap.min.css}" />
 <style>
@@ -8,22 +8,55 @@
 	text-align: center;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("input").click(function() {
+		var inputClickado = $(this).val();
+		var elemento =	document.getElementById("container");
+		$('#container').prepend("<input type='hidden' name='pregunta2' value='"+inputClickado+"'>");
+	});	
+});
+</script>
 </head>
 <body>
 	<form th:action="@{/pregunta2}" method="post">
 		<div class="card mb-3">
 			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div id="container"></div>
 			<div class="card-body">
-				<h5 class="card-title">Si hablamos de <i>concass&eacute;</i>, hablamos de...</h5>
+				<h5 class="card-title">
+					Si hablamos de <i>concass&eacute;</i>, hablamos de...
+				</h5>
 			</div>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
 				th:src="@{/images/concasse.jpg}" alt="imagen">
 			<div class="card-body">
-				<input type="radio" value="0"/><label>Un postre de manzana</label>
-				<input type="radio" value="0"/><label>Un tipo de cocción para ciertas verduras</label>
-				<input type="radio" value="2"/><label>Un tipo de corte</label>
-				<input type="radio" value="0"/><label>Una salsa</label>
+				<div class="form-check">
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" name="pregunta2" id="optionsRadios1"
+						value="0"> Un postre de manzana
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" name="pregunta2" id="optionsRadios2"
+						value="0"> Un tipo de cocci&oacute;n para ciertas verduras
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" name="pregunta2" id="optionsRadios3"
+						value="2"> Un tipo de corte
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input type="radio"
+						class="form-check-input" name="pregunta2" id="optionsRadios4"
+						value="0"> Una salsa
+					</label>
+				</div>
 			</div>
 			<div class="progress">
 				<div class="progress-bar progress-bar-striped bg-danger"

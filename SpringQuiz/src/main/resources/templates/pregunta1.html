@@ -8,11 +8,22 @@
 	text-align: center;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("input").click(function() {
+		var inputClickado = $(this).val();
+		var elemento =	document.getElementById("container");
+		$('#container').prepend("<input type='hidden' name='pregunta1' value='"+inputClickado+"'>");
+	});	
+});
+</script>
 </head>
 <body>
 	<form th:action="@{/pregunta1}" method="post">
 		<div class="card mb-3">
 			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div id="container"></div>
 			<div class="card-body">
 				<h5 class="card-title">&iquest;Qu&eacute; fruta seca se obtiene
 					de las uvas?</h5>
