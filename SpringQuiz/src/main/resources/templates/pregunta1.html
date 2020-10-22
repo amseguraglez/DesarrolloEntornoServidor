@@ -13,8 +13,8 @@
 $(document).ready(function() {
 	$("input").click(function() {
 		var inputClickado = $(this).val();
-		var elemento =	document.getElementById("container");
-		$('#container').prepend("<input type='hidden' name='pregunta1' value='"+inputClickado+"'>");
+		$(this).css({"background-color": "orange"});
+ 		document.getElementById("container").innerHTML="<input type='hidden' name='pregunta1' value='"+inputClickado+"'/>";
 	});	
 });
 </script>
