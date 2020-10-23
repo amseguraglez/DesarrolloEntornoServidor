@@ -1,0 +1,49 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pregunta 3</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/pregunta3}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div class="card-body">
+				<h5 class="card-title">&iquest;Qu&eacute; significa ligar un
+					alimento?</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/ligar.jpg}" alt="imagen">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="exampleSelect1" style="background-color: #ccccff;">Selecciona la respuesta
+						correcta en el desplegable</label> <select class="form-control"
+						id="exampleSelect1" name="pregunta3">
+						<option value="A&ntilde;adir salsa a un alimento">A&ntilde;adir salsa a
+							un alimento</option>
+						<option value="Utilizar especias como ingrediente">Utilizar
+							especias como ingrediente</option>
+						<option
+							value="Cocinar con bebidas alcoh&oacute;licas (vino, cerveza...)">Cocinar
+							con bebidas alcoh&oacute;licas (vino, cerveza...)</option>
+						<option value="Espesar con ayuda de huevo, harina, mantequilla...">Espesar
+							con ayuda de huevo, harina, mantequilla...</option>
+					</select>
+				</div>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-danger"
+					role="progressbar" style="width: 30%" aria-valuenow="100"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Siguiente</button>
+	</form>
+</body>
+</html>

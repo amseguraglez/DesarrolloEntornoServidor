@@ -1,0 +1,88 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pregunta 4</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/pregunta4}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div class="card-body">
+				<h5 class="card-title">&iquest;Cu&aacute;les son los
+					ingredientes necesarios para hacer ali-oli?</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/alioli.jpg}" alt="imagen">
+			<div class="card-body">
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Patata"> Patata
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Huevo"> Huevo
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Aceite"> Aceite
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Ajo"> Ajo
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Azafr&aacute;n"> Azafr&aacute;n
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Cebolla"> Cebolla
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Mantequilla"> Mantequilla
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Sal"> Sal
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label"> <input
+						class="form-check-input" type="checkbox" name="pregunta4"
+						value="Lim&oacute;n"> Lim&oacute;n
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped bg-danger"
+				role="progressbar" style="width: 40%" aria-valuenow="100"
+				aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+		<button type="submit" class="btn btn-primary">Siguiente</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pregunta 6</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/pregunta6}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div class="card-body">
+				<h5 class="card-title">&iquest;Qu&eacute; significa albardar una
+					carne?</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/albardar.jpg}" alt="imagen">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="exampleSelect1" style="background-color: #ccccff;">Selecciona la respuesta
+						correcta en el desplegable</label> <select class="form-control"
+						id="exampleSelect1" name="pregunta6">
+						<option value="Sellarla antes de asarla">Sellarla antes de asarla</option>
+						<option value="Trocearla antes de cocinarla">Trocearla antes de cocinarla</option>
+						<option
+							value="Envolverla en tocino para que no se seque al cocinarla">Envolverla en tocino para que no se seque al cocinarla</option>
+						<option value="Marinarla en especias y aceite antes de cocinarla">Marinarla en especias y aceite antes de cocinarla</option>
+					</select>
+				</div>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-danger"
+					role="progressbar" style="width: 60%" aria-valuenow="100"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Siguiente</button>
+	</form>
+</body>
+</html>
