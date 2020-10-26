@@ -1,0 +1,48 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pregunta 9</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$("input").click(function() {
+		var inputClickado = $(this).val();
+		$(this).css({"background-color": "orange"});
+ 		document.getElementById("container").innerHTML="<input type='hidden' name='pregunta9' value='"+inputClickado+"'/>";
+	});	
+});
+</script>
+</head>
+<body>
+	<form th:action="@{/pregunta9}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div id="container"></div>
+			<div class="card-body">
+				<h5 class="card-title">&iquest;Cu&aacute;l es la temperatura m&aacute;xima para fre&iacute;r en aceite de oliva?</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/aceite.jpg}" alt="imagen">
+			<div class="card-body">
+				<input type="button" name="pregunta9" class="btn btn-success" value="170 grados"/>
+				<input type="button" name="pregunta9" class="btn btn-success" value="180 grados"/>
+				<input type="button" name="pregunta9" class="btn btn-success" value="200 grados"/>
+				<input type="button" name="pregunta9" class="btn btn-success" value="150 grados"/>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-danger"
+					role="progressbar" style="width: 90%" aria-valuenow="100"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Siguiente</button>
+	</form>
+</body>
+</html>

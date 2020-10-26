@@ -1,0 +1,37 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pregunta 10</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<style>
+* {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/pregunta10}" method="post">
+		<div class="card mb-3">
+			<h3 class="card-header">&iquest;Eres un aut&eacute;ntico chef?</h3>
+			<div class="card-body">
+				<h5 class="card-title">Para terminar, escribe la receta para
+					cocinar un cocido madrile&ntilde;o</h5>
+			</div>
+			<img
+				style="height: 200px; width: auto; display: block; margin: auto;"
+				th:src="@{/images/cocido.jpg}" alt="imagen">
+			<div class="card-body">
+				<div class="form-group">
+					<textarea class="form-control" id="exampleTextarea" rows="5" name="pregunta10"></textarea>
+				</div>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-success"
+					role="progressbar" style="width: 100%" aria-valuenow="100"
+					aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Finalizar</button>
+	</form>
+</body>
+</html>

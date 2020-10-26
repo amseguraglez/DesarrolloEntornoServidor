@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorSpringQuiz {
@@ -113,7 +114,7 @@ public class ControladorSpringQuiz {
 		}
 		return "pregunta5";
 	}
-	
+
 	/* pregunta5 */
 	@GetMapping("/pregunta5")
 	public String process5(HttpSession session) {
@@ -128,7 +129,7 @@ public class ControladorSpringQuiz {
 		}
 		return "pregunta6";
 	}
-	
+
 	/* pregunta6 */
 	@GetMapping("/pregunta6")
 	public String process6(HttpSession session) {
@@ -143,7 +144,7 @@ public class ControladorSpringQuiz {
 		}
 		return "pregunta7";
 	}
-	
+
 	/* pregunta7 */
 	@GetMapping("/pregunta7")
 	public String process7(HttpSession session) {
@@ -158,7 +159,7 @@ public class ControladorSpringQuiz {
 		}
 		return "pregunta8";
 	}
-	
+
 	/* pregunta8 */
 	@GetMapping("/pregunta8")
 	public String process8(HttpSession session) {
@@ -199,10 +200,56 @@ public class ControladorSpringQuiz {
 		return "pregunta9";
 	}
 
-	/* fin sesión */
-	@PostMapping("/destroy")
-	public String destroySession(HttpServletRequest request) {
-		request.getSession().invalidate();
-		return "redirect:/inicio";
+	/* pregunta9 */
+	@GetMapping("/pregunta9")
+	public String process9(HttpSession session) {
+		return "pregunta9";
 	}
+
+	@PostMapping("/pregunta9")
+	public String persistMessage9(HttpServletRequest request) {
+		String pregunta9 = request.getParameter("pregunta9");
+		if (pregunta9.equals("200 grados")) {
+			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+		}
+		return "pregunta10";
+	}
+
+	/* pregunta10 */
+	@GetMapping("/pregunta10")
+	public String process10(HttpSession session) {
+		return "pregunta10";
+	}
+
+	@PostMapping("/pregunta10")
+	public String persistMessage10(HttpServletRequest request) {
+		String pregunta10 = request.getParameter("pregunta10");
+		if (pregunta10.length() <= 30)
+			request.getSession().setAttribute("contador", contador + 1);
+		else if (pregunta10.length() <= 80)
+			request.getSession().setAttribute("contador", contador + 2);
+		else if (pregunta10.length() <= 140)
+			request.getSession().setAttribute("contador", contador + 3);
+		else if (pregunta10.length() > 140)
+			request.getSession().setAttribute("contador", contador + 4);
+		else
+			request.getSession().setAttribute("contador", contador + 0);
+		return "redirect:/final";
+	}
+
+	@GetMapping("/final")
+	public ModelAndView process11(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("final");
+		int resultado = (int) session.getAttribute("contador");
+		mav.addObject("contador", resultado);
+		return mav;
+	}
+
+	/* fin sesión */
+//	@PostMapping("/destroy")
+//	public String destroySession(HttpServletRequest request) {
+//		request.getSession().invalidate();
+//		return "redirect:/inicio";
+//	}
 }
