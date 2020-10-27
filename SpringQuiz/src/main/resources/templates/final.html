@@ -10,14 +10,24 @@
 </style>
 </head>
 <body>
-	<h2>Y el resultado es...</h2>
 	<div class="jumbotron">
-	<h1 th:text="${contador}"></h1>
-		<h1 class="display-3" th:if="${contador} <=5" th:text="Pinche"></h1>
-		<h1 class="display-3" th:if="${contador}  <= 15" th:text="Amateur"></h1>
-		<h1 class="display-3" th:if="${contador}  <= 22" th:text="Cocinillas"></h1>
-		<h1 class="display-3" th:if="${contador}  <= 26" th:text="Gourmet"></h1>
-		<h1 class="display-3" th:if="${contador}  <= 30" th:text="Chef"></h1>
+		<h1 th:text="${nombre} + ', &iexcl;has obtenido ' + ${contador} + ' puntos!'"></h1>
+		<div th:if="${contador <= 5}">
+			<h1 class="display-3" th:text="Pinche"></h1>
+		</div>
+		<div th:if="${contador >= 6 && contador <=15}">
+			<h1 class="display-3" th:text="Amateur"></h1>
+		</div>
+		<div th:if="${contador >=16 && contador <= 22}">
+			<h1 class="display-3" th:text="Cocinillas"></h1>
+		</div>
+		<div th:if="${contador >= 22 && contador <= 26}">
+			<h1 class="display-3"  th:text="Gourmet"></h1>
+		</div>
+		<div  th:if="${contador > 26 && contador <= 31}">
+		
+			<h1 class="display-3" th:text="Chef"></h1>
+		</div>
 		<p class="lead">This is a simple hero unit, a simple
 			jumbotron-style component for calling extra attention to featured
 			content or information.</p>

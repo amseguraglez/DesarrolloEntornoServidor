@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorSpringQuiz {
-	private int contador;
+	private static int contador;
 	private final int respuestaCorrecta = 2;
 	private final int miniRespuestaCorrecta = 1;
 
@@ -46,7 +46,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage1(HttpServletRequest request) {
 		String pregunta1 = request.getParameter("pregunta1");
 		if (pregunta1.equals("Pasas")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta2";
 	}
@@ -61,7 +61,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage2(HttpServletRequest request) {
 		String pregunta2 = request.getParameter("pregunta2");
 		if (pregunta2.equals("Un tipo de corte")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta3";
 	}
@@ -76,7 +76,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage3(HttpServletRequest request) {
 		String pregunta3 = request.getParameter("pregunta3");
 		if (pregunta3.equals("Espesar con ayuda de huevo, harina, mantequilla...")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta4";
 	}
@@ -91,26 +91,23 @@ public class ControladorSpringQuiz {
 	public String persistMessage4(HttpServletRequest request) {
 		String pregunta4 = request.getParameter("pregunta4");
 		switch (pregunta4) {
-		case "Patata":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
 		case "Huevo":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Aceite":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Ajo":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Sal":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Lim&oacute;n":
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		default:
-			break;
+			request.getSession().setAttribute("contador", contador += 0);
 		}
 		return "pregunta5";
 	}
@@ -125,7 +122,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage5(HttpServletRequest request) {
 		String pregunta5 = request.getParameter("pregunta5");
 		if (pregunta5.equals("Cocinar alimentos lentamente en az&uacute;car o en grasa")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta6";
 	}
@@ -140,7 +137,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage6(HttpServletRequest request) {
 		String pregunta6 = request.getParameter("pregunta6");
 		if (pregunta6.equals("Envolverla en tocino para que no se seque al cocinarla")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta7";
 	}
@@ -155,7 +152,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage7(HttpServletRequest request) {
 		String pregunta7 = request.getParameter("pregunta7");
 		if (pregunta7.equals("Parisina")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta8";
 	}
@@ -171,31 +168,30 @@ public class ControladorSpringQuiz {
 		String pregunta8 = request.getParameter("pregunta8");
 		switch (pregunta8) {
 		case "Aguacate":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Cebolla":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Lima":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Cilantro":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Sal":
-			request.getSession().setAttribute("contador", contador + miniRespuestaCorrecta);
-			break;
-		case "Lim&oacute;n":
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Tomate":
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
 		case "Pimiento":
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
-			break;
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+			//break;
+		case "Lim&oacute;n":
+			request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
 		default:
-			break;
+			request.getSession().setAttribute("contador", contador += 0);
 		}
 		return "pregunta9";
 	}
@@ -210,7 +206,7 @@ public class ControladorSpringQuiz {
 	public String persistMessage9(HttpServletRequest request) {
 		String pregunta9 = request.getParameter("pregunta9");
 		if (pregunta9.equals("200 grados")) {
-			request.getSession().setAttribute("contador", contador + respuestaCorrecta);
+			request.getSession().setAttribute("contador", contador += respuestaCorrecta);
 		}
 		return "pregunta10";
 	}
@@ -225,15 +221,15 @@ public class ControladorSpringQuiz {
 	public String persistMessage10(HttpServletRequest request) {
 		String pregunta10 = request.getParameter("pregunta10");
 		if (pregunta10.length() <= 30)
-			request.getSession().setAttribute("contador", contador + 1);
-		else if (pregunta10.length() <= 80)
-			request.getSession().setAttribute("contador", contador + 2);
-		else if (pregunta10.length() <= 140)
-			request.getSession().setAttribute("contador", contador + 3);
-		else if (pregunta10.length() > 140)
-			request.getSession().setAttribute("contador", contador + 4);
+			request.getSession().setAttribute("contador", contador += 1);
+		else if (pregunta10.length() >= 31 && pregunta10.length() <=80)
+			request.getSession().setAttribute("contador", contador += 2);
+		else if (pregunta10.length()>=81 && pregunta10.length() <= 140)
+			request.getSession().setAttribute("contador", contador += 3);
+		else if (pregunta10.length() >= 141)
+			request.getSession().setAttribute("contador", contador += 4);
 		else
-			request.getSession().setAttribute("contador", contador + 0);
+			request.getSession().setAttribute("contador", contador += 0);
 		return "redirect:/final";
 	}
 
@@ -243,6 +239,8 @@ public class ControladorSpringQuiz {
 		mav.setViewName("final");
 		int resultado = (int) session.getAttribute("contador");
 		mav.addObject("contador", resultado);
+		String jugador = (String)session.getAttribute("nombre");
+		mav.addObject("nombre", jugador);
 		return mav;
 	}
 
