@@ -20,7 +20,6 @@ public class ControladorSpringQuiz {
 	private int contador;
 	private final int respuestaCorrecta = 2;
 	private final int miniRespuestaCorrecta = 1;
-	private ModelAndView mav;
 
 	/* inicio */
 	@GetMapping("/inicio")
@@ -266,7 +265,7 @@ public class ControladorSpringQuiz {
 
 	@GetMapping("/final")
 	public ModelAndView process11(HttpSession session) {
-		mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("final");
 		int resultado = (int) session.getAttribute("contador");
 		mav.addObject("contador", resultado);
@@ -282,9 +281,9 @@ public class ControladorSpringQuiz {
 	}
 
 	/* fin sesión */
-//	@PostMapping("/destroy")
-//	public String destroySession(HttpServletRequest request) {
-//		request.getSession().invalidate();
-//		return "redirect:/inicio";
-//	}
+	@PostMapping("/destroy")
+	public String destroySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/inicio";
+	}
 }
