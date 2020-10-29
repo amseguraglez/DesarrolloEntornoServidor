@@ -20,10 +20,11 @@ p {
 </style>
 </head>
 <body>
+<form th:action="@{/final}" method="post">
 	<div class="jumbotron">
 		<h1
-			th:text="${nombre} + ', &iexcl;has obtenido ' + ${contador} + ' puntos!'"></h1>
-		<div th:if="${contador <= 5}">
+			th:text="${nombrejugador} + ', &iexcl;has obtenido ' + ${puntuacionjugador} + ' puntos!'"></h1>
+		<div th:if="${puntuacionjugador <= 5}">
 			<h1 class="display-3" th:text="Pinche"></h1>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
@@ -32,7 +33,7 @@ p {
 				empezar! No te desanimes, que muy pronto mejorar&aacute;s. Poco a
 				poco aprender&aacute;s nuevas t&eacute;cnicas y formas de cocinar.</p>
 		</div>
-		<div th:if="${contador >= 6 && contador <=15}">
+		<div th:if="${puntuacionjugador >= 6 && puntuacionjugador <=15}">
 			<h1 class="display-3" th:text="Amateur"></h1>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
@@ -43,7 +44,7 @@ p {
 				cocinar.
 			</p>
 		</div>
-		<div th:if="${contador >=16 && contador <= 22}">
+		<div th:if="${puntuacionjugador >=16 && puntuacionjugador <= 22}">
 			<h1 class="display-3" th:text="Cocinillas"></h1>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
@@ -52,7 +53,7 @@ p {
 				tus experimentos culinarios. &iexcl;Que el aprendizaje no decaiga y
 				sigas disfrutando con la cocina!</p>
 		</div>
-		<div th:if="${contador >= 22 && contador <= 26}">
+		<div th:if="${puntuacionjugador >= 22 && puntuacionjugador <= 26}">
 			<h1 class="display-3" th:text="Gourmet"></h1>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
@@ -62,7 +63,7 @@ p {
 				culinaria es m&aacute;s que decente y cada d&iacute;a te superas.
 				&iexcl;Sigue as&iacute;!</p>
 		</div>
-		<div th:if="${contador >= 27 && contador <= 31}">
+		<div th:if="${puntuacionjugador >= 27 && puntuacionjugador <= 31}">
 			<h1 class="display-3" th:text="Chef"></h1>
 			<img
 				style="height: 200px; width: auto; display: block; margin: auto;"
@@ -86,18 +87,15 @@ p {
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table-primary">
-					<td th:text=${nombre}></td>
-					<td th:text=${contador}></td>
-					<td th:if="${contador <= 5}" th:text="Pinche"></td>
-					<td th:if="${contador >= 6 && contador <=15}" th:text="Amateur"></td>
-					<td th:if="${contador >=16 && contador <= 22}" th:text="Cocinillas"></td>
-					<td th:if="${contador >= 22 && contador <= 26}" th:text="Gourmet"></td>
-					<td th:if="${contador >= 27 && contador <= 31}" th:text="Chef"></td>
+				<tr class="table-success" th:each="puntuacion, iterStat: ${puntuaciones}" th:if="${iterStat.index >= iterStat.size-5}">
+					<td th:text=${puntuacion.nombrejugador}></td>
+					<td th:text=${puntuacion.puntuacionjugador}></td>
+					<td th:text=${puntuacion.clasificacionjugador}></td>
 				</tr>
 			</tbody>
 		</table>
-		<form th:action="@{/final}" method="post">
+		</form>
+		<form th:action="@{/destroy}" method="post">
 			<p class="lead">
 				<button class="btn btn-info btn-lg" type="submit">Vuelve a
 					intentarlo</button>

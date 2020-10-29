@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+//import com.example.dao.PuntuacionDao;
+//import com.example.model.Puntuacion;
+
 @Controller
 public class ControladorSpringQuiz {
-	private int contador;
-	private final int respuestaCorrecta = 2;
-	private final int miniRespuestaCorrecta = 1;
+	@Autowired
+	private PuntuacionDao puntuaciondao;
+
+	private int puntuacionjugador;
+	private final int RESPUESTACORRECTA = 2;
+	private final int MINIRESPUESTACORRECTA = 1;
 
 	/* inicio */
 	@GetMapping("/inicio")
@@ -28,9 +35,9 @@ public class ControladorSpringQuiz {
 	}
 
 	@PostMapping("/inicio")
-	public String persistMessage0(@RequestParam("nombre") String nombre, HttpServletRequest request) {
-		if (nombre != null) {
-			request.getSession().setAttribute("nombre", nombre);
+	public String persistMessage0(@RequestParam("nombrejugador") String nombrejugador, HttpServletRequest request) {
+		if (nombrejugador != null) {
+			request.getSession().setAttribute("nombrejugador", nombrejugador);
 			return "pregunta1";
 		}
 		return "redirect:/inicio";
@@ -47,7 +54,7 @@ public class ControladorSpringQuiz {
 		String pregunta1 = request.getParameter("pregunta1");
 		if (pregunta1 != null) {
 			if (pregunta1.equals("Pasas")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta1";
@@ -65,7 +72,7 @@ public class ControladorSpringQuiz {
 		String pregunta2 = request.getParameter("pregunta2");
 		if (pregunta2 != null) {
 			if (pregunta2.equals("Un tipo de corte")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta2";
@@ -83,7 +90,7 @@ public class ControladorSpringQuiz {
 		String pregunta3 = request.getParameter("pregunta3");
 		if (pregunta3 != null) {
 			if (pregunta3.equals("Espesar con ayuda de huevo, harina, mantequilla...")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta3";
@@ -102,22 +109,22 @@ public class ControladorSpringQuiz {
 		if (pregunta4 != null) {
 			switch (pregunta4) {
 			case "Huevo":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Aceite":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Ajo":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Sal":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Lim&oacute;n":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			default:
-				request.getSession().setAttribute("contador", contador += 0);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 0);
 			}
 		} else
 			return "redirect:/pregunta4";
@@ -135,7 +142,7 @@ public class ControladorSpringQuiz {
 		String pregunta5 = request.getParameter("pregunta5");
 		if (pregunta5 != null) {
 			if (pregunta5.equals("Cocinar alimentos lentamente en az&uacute;car o en grasa")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta5";
@@ -153,7 +160,7 @@ public class ControladorSpringQuiz {
 		String pregunta6 = request.getParameter("pregunta6");
 		if (pregunta6 != null) {
 			if (pregunta6.equals("Envolverla en tocino para que no se seque al cocinarla")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta6";
@@ -171,7 +178,7 @@ public class ControladorSpringQuiz {
 		String pregunta7 = request.getParameter("pregunta7");
 		if (pregunta7 != null) {
 			if (pregunta7.equals("Parisina")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta7";
@@ -190,30 +197,30 @@ public class ControladorSpringQuiz {
 		if (pregunta8 != null) {
 			switch (pregunta8) {
 			case "Aguacate":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Cebolla":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Lima":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Cilantro":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Sal":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Tomate":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Pimiento":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 				// break;
 			case "Lim&oacute;n":
-				request.getSession().setAttribute("contador", contador += miniRespuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += MINIRESPUESTACORRECTA);
 			default:
-				request.getSession().setAttribute("contador", contador += 0);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 0);
 			}
 		} else
 			return "redirect:/pregunta8";
@@ -231,7 +238,7 @@ public class ControladorSpringQuiz {
 		String pregunta9 = request.getParameter("pregunta9");
 		if (pregunta9 != null) {
 			if (pregunta9.equals("200 grados")) {
-				request.getSession().setAttribute("contador", contador += respuestaCorrecta);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += RESPUESTACORRECTA);
 			}
 		} else
 			return "redirect:/pregunta9";
@@ -249,41 +256,68 @@ public class ControladorSpringQuiz {
 		String pregunta10 = request.getParameter("pregunta10");
 		if (pregunta10 != null) {
 			if (pregunta10.length() <= 30)
-				request.getSession().setAttribute("contador", contador += 1);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 1);
 			else if (pregunta10.length() >= 31 && pregunta10.length() <= 80)
-				request.getSession().setAttribute("contador", contador += 2);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 2);
 			else if (pregunta10.length() >= 81 && pregunta10.length() <= 140)
-				request.getSession().setAttribute("contador", contador += 3);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 3);
 			else if (pregunta10.length() >= 141)
-				request.getSession().setAttribute("contador", contador += 4);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 4);
 			else
-				request.getSession().setAttribute("contador", contador += 0);
+				request.getSession().setAttribute("puntuacionjugador", puntuacionjugador += 0);
 		} else
 			return "redirect:/pregunta10";
 		return "redirect:/final";
 	}
 
-	@GetMapping("/final")
-	public ModelAndView process11(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("final");
-		int resultado = (int) session.getAttribute("contador");
-		mav.addObject("contador", resultado);
-		String jugador = (String) session.getAttribute("nombre");
-		mav.addObject("nombre", jugador);
-		return mav;
+//	@GetMapping("/final")
+//	public ModelAndView process11(HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("final");
+//		int resultado = (int) session.getAttribute("puntuacionjugador");
+//		mav.addObject("puntuacionjugador", resultado);
+//		String jugador = (String) session.getAttribute("nombrejugador");
+//		mav.addObject("nombrejugador", jugador);
+//		return mav;
+//	}
+
+	/* asignación definitiva y añadido al modelo */
+	@RequestMapping(value = "/final", method = RequestMethod.GET)
+	public String guardarPuntuacion(Model modelo, HttpSession session) {
+		String nombrejugador = (String) session.getAttribute("nombrejugador");
+		int puntuacionjugador = (int) session.getAttribute("puntuacionjugador");
+		if (puntuacionjugador <= 5)
+			session.setAttribute("clasificacionjugador", "Pinche");
+		else if (puntuacionjugador >= 6 && puntuacionjugador <= 15)
+			session.setAttribute("clasificacionjugador", "Amateur");
+		else if (puntuacionjugador >= 16 && puntuacionjugador <= 22)
+			session.setAttribute("clasificacionjugador", "Cocinillas");
+		else if (puntuacionjugador >= 22 && puntuacionjugador <= 26)
+			session.setAttribute("clasificacionjugador", "Gourmet");
+		else if (puntuacionjugador >= 27)
+			session.setAttribute("clasificacionjugador", "Chef");
+		String clasificacionjugador = (String) session.getAttribute("clasificacionjugador");
+		Puntuacion puntuacion = new Puntuacion(nombrejugador, puntuacionjugador, clasificacionjugador);
+		puntuaciondao.guardar(puntuacion);
+		modelo.addAttribute("nombrejugador", nombrejugador);
+		modelo.addAttribute("puntuacionjugador", puntuacionjugador);
+		List<Puntuacion> puntuaciones = puntuaciondao.encuentraTodos();
+		modelo.addAttribute("puntuaciones", puntuaciones);
+		return "final";
 	}
-	
-	@PostMapping("/final")
-	public String persistMessage11(HttpServletRequest request) {
-		contador = 0;
-		return "inicio";
-	}
+
+//	@RequestMapping(value = "/final", method = RequestMethod.POST)
+//	public String index(Model modelo) {
+//		List<Puntuacion> puntuaciones = puntuaciondao.encuentraTodos();
+//		modelo.addAttribute("puntuaciones", puntuaciones);
+//		return "redirect:/final";
+//	}
 
 	/* fin sesión */
 	@PostMapping("/destroy")
 	public String destroySession(HttpServletRequest request) {
 		request.getSession().invalidate();
+		puntuacionjugador = 0;
 		return "redirect:/inicio";
 	}
 }
